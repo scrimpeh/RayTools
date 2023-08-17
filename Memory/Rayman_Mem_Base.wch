@@ -1,0 +1,127 @@
+SystemID PSX
+1F61BC	w	s	0	MainRAM	X
+1F61BE	w	s	0	MainRAM	Y
+1F61CC	w	s	0	MainRAM	XS (fullpx)
+1F4EB0	w	s	0	MainRAM	XS (subpx)
+1F61CE	w	s	0	MainRAM	YS (fullpx)
+0	S	_	1		
+1F84B8	w	u	0	MainRAM	Cam X
+1F84C0	w	u	0	MainRAM	Cam Y
+1FA550	w	s	0	MainRAM	Cam XS (fullpx)
+1FA552	w	s	0	MainRAM	Cam YS (fullpx)
+0	S	_	1		
+1F6220	w	u	0	MainRAM	Speed Counter
+1F61FA	w	u	0	MainRAM	Jump Accel Counter
+000313	b	u	0	MainRAM	Fall Accel Counter
+1FFE52	b	s	0	MainRAM	
+1F9AC0	w	u	0	MainRAM	Air Timer
+1F43D0	w	h	0	MainRAM	Abilities
+1F61D4	w	u	0	MainRAM	Rayman - is slippery
+1F61F0	w	u	0	MainRAM	Tile Below Feet
+0129B9	b	s	0	MainRAM	P Speed H Left
+0129C1	b	s	0	MainRAM	P Speed H Left
+0129C9	b	s	0	MainRAM	P Speed H Left
+012A29	b	s	0	MainRAM	P Speed R Left
+012A31	b	s	0	MainRAM	P Speed R Left
+012A39	b	s	0	MainRAM	P Speed R Left
+012AA1	b	s	0	MainRAM	P Speed R Left
+0129B8	b	s	0	MainRAM	P Speed H Right
+0129C0	b	s	0	MainRAM	P Speed H Right
+0129C8	b	s	0	MainRAM	P Speed H Right
+012A28	b	s	0	MainRAM	P Speed R Right
+012A30	b	s	0	MainRAM	P Speed R Right
+012A38	b	s	0	MainRAM	P Speed R Right
+012AA0	b	s	0	MainRAM	P Speed R Right
+0	S	_	1		
+1F55A0	w	s	0	MainRAM	Ring Tether Length
+1D8B30	w	u	0	MainRAM	Fist Charge Up
+0ADE9C	w	s	0	MainRAM	Moskito 2 X
+0ADE9E	w	s	0	MainRAM	Moskito 2 Y
+0ADEAC	w	s	0	MainRAM	Moskito 2 X Speed
+0ADEAE	w	s	0	MainRAM	Moskito 2 Y Speed
+0A7F3A	w	s	0	MainRAM	
+0ADF7C	w	u	0	MainRAM	Plum 12 X
+0ADF8C	w	s	0	MainRAM	Plum 12 X Speed
+0AECAC	w	s	0	MainRAM	plum 1  x speed
+0AEC9C	w	s	0	MainRAM	plum 1  x
+0AF01C	w	u	0	MainRAM	plum 2 x
+0AF02C	w	s	0	MainRAM	Plum 2 x speed
+0AF09C	w	s	0	MainRAM	plum 3 x speed
+0AF08C	w	u	0	MainRAM	plum 3 x
+0ADFEC	w	u	0	MainRAM	plum 1 x
+0ADFFC	w	s	0	MainRAM	plum 1 x speed
+0B036C	w	s	0	MainRAM	Plum 4 X Speed
+0B036E	w	s	0	MainRAM	Plum 4 Y Speed
+0B035C	w	s	0	MainRAM	Plum 4 X Pos
+0B035E	w	s	0	MainRAM	Plum 4 Y Pos
+0AF0FC	w	u	0	MainRAM	Plum 5 X
+0AF10C	w	s	0	MainRAM	Plum 5 X Speed
+0AE91C	w	u	0	MainRAM	Plum 6 X
+0AE92C	w	s	0	MainRAM	Plum 6 X Speed
+0AF2BC	w	u	0	MainRAM	Plum 7 X
+0AF2CC	w	s	0	MainRAM	Plum 7 X Speed
+0AED0C	w	s	0	MainRAM	Plum 8 X
+0AED1C	w	s	0	MainRAM	Plum 8 X Süeed
+0B058C	w	u	0	MainRAM	Plum 9 X
+0B058E	w	u	0	MainRAM	Plum 9 Y
+0B059E	w	s	0	MainRAM	Plum 9 Y Speed
+0B059C	w	s	0	MainRAM	Plum 9 X Speed
+0B035C	w	u	0	MainRAM	Plum 10 X
+0B036C	w	s	0	MainRAM	Plum 10 X Speed
+0B03CC	w	s	0	MainRAM	Plum 11 X
+0B03DC	w	s	0	MainRAM	Plum 11 X Speed
+0B03CE	w	s	0	MainRAM	Plum 11 Y
+0B03DE	w	s	0	MainRAM	Plum 11 Y Speed
+0AEAEC	w	s	0	MainRAM	Moskito X Speed
+0AEAEE	w	s	0	MainRAM	Moskito Y Speed
+0AEADC	w	s	0	MainRAM	Moskito X
+0AEADE	w	s	0	MainRAM	Moskito Y
+0	S	_	1		
+1F61E7	b	u	0	MainRAM	On Map
+0F66A6	b	u	0	MainRAM	On Map 2
+1E63E8	d	u	0	MainRAM	About to go
+1F7F80	d	u	0	MainRAM	Map location
+1CEE81	b	u	0	MainRAM	In Level
+0	S	_	1		
+1F8138	d	u	0	MainRAM	Cages
+1C3364	b	u	0	MainRAM	Levels unlocked (start)
+1C34B8	b	u	0	MainRAM	Mr Dark unlocked
+1F43D1	b	u	0	MainRAM	Is running unlocked (can have other effects)
+1F8120	b	u	0	MainRAM	Picking Up Cage
+1F9AC8	b	u	0	MainRAM	Persistent things (start)
+1F4430	w	u	0	MainRAM	Screen Width
+1F4432	w	u	0	MainRAM	Screen Height
+1F4438	d	h	0	MainRAM	Tile addresses (start)
+1D7AE0	d	h	0	MainRAM	Events (start)
+1D7AE4	b	u	0	MainRAM	Event count
+0	S	_	1		
+1F61C2	w	s	0	MainRAM	Rayman X (relative to camera)
+1F61C4	w	s	0	MainRAM	Rayman Y (relative to screen)
+1E4F59	b	h	0	MainRAM	Strings
+126528	b	u	0	MainRAM	Filename Strings (start)
+1D8B37	b	u	1	MainRAM	Fist Power
+1D8B2C	w	u	0	MainRAM	Fist Charge
+1D8B32	w	u	0	MainRAM	Fist Speed
+1D8B31	b	u	0	MainRAM	Fist Release Energy
+1D8B28	w	s	0	MainRAM	Fist Y (subpx)
+0A6EFA	w	s	0	MainRAM	Fist Y (fullpx)
+0A6EF8	w	s	0	MainRAM	Fist X (fullpx)
+0A6EFE	w	s	0	MainRAM	Fist X (relative to screen)
+1E561C	w	s	0	MainRAM	Fist X (relative to screen)
+1D8B35	b	u	0	MainRAM	Fist returning
+1D8B39	b	u	0	MainRAM	Fist hitting something
+1F61EC	b	s	0	MainRAM	Block Types around Rayman
+1F61DE	w	s	0	MainRAM	Rayman fall counter
+1F4EBA	b	s	0	MainRAM	Counters
+1F61FC	w	s	0	MainRAM	Fall Counter
+1F61F6	w	s	0	MainRAM	Rayman Animation Index Start
+1F61F8	w	s	0	MainRAM	Rayman Animation Index Start
+1F620D	b	s	0	MainRAM	?
+1D09D0	w	s	0	MainRAM	?
+0	S	_	1		
+1E4D50	b	u	0	MainRAM	Lives
+1F6200	b	u	0	MainRAM	HP
+1F61E2	w	u	0	MainRAM	Invincibility
+1F7A48	b	u	0	MainRAM	Is in (boss) win pose (can be used to cheat to next screen)
+1FA5A8	w	u	0	MainRAM	Is going back to map
+
