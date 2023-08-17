@@ -1,5 +1,5 @@
 -- Rayman Ringboost Script used for finding the ring heatmap
--- For BizHawk 2.8
+-- For BizHawk 2.9
 
 -- Adapted from the RingBoost brute forcer initially developed by Got4n
 -- The main change is that this script receives an event index as input

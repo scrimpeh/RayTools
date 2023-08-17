@@ -1,5 +1,5 @@
 -- Ring Heatmap Visualizer
--- For BizHawk 2.8 / PSX Rayman
+-- For BizHawk 2.9 / PSX Rayman
 
 -- Select a ring in the level and display the ringboost heatmap
 -- Adapted in large parts from the Map Viewer script initially developed by fuerchter and markusa4 (https://github.com/fuerchter/RaymanMap)
@@ -56,19 +56,19 @@ function get_hitbox(current)
 	local animation_mem = memory.read_u32_le(current + 4) - ADDR_OFFSET
 	local animation_frame  = memory.readbyte(current + 0x54)
 	local animation_counter = memory.readbyte(current + 0x55)
-	local animation_base = animation_mem + bit.lshift(bit.lshift(animation_frame, 1) + animation_frame, 2)
-	local hitbox_addr = memory.read_u32_le(animation_base + 4) - ADDR_OFFSET + bit.lshift(animation_counter, 2)
+	local animation_base = animation_mem + (((animation_frame << 1) + animation_frame) << 2)
+	local hitbox_addr = memory.read_u32_le(animation_base + 4) - ADDR_OFFSET + (animation_counter << 2)
 	local hitbox_offset_x = memory.readbyte(hitbox_addr)
 	local hitbox_offset_y = memory.readbyte(hitbox_addr + 1)
 	local width = memory.readbyte(hitbox_addr + 2)
 	local height = memory.readbyte(hitbox_addr + 3)
-	local flipped = bit.band(memory.readbyte(current + 0x6d), 0x40)
+	local flipped = memory.readbyte(current + 0x6D) & 0x40
 	local x = current_x + hitbox_offset_x
 	if flipped == 0x40 then
-		x = current_x + bit.lshift(memory.readbyte(current + 0x52), 1) - hitbox_offset_x - width
+		x = current_x + (memory.readbyte(current + 0x52) << 1) - hitbox_offset_x - width
 	end
 	local y = current_y + hitbox_offset_y
-	
+
 	return { 
 		l = x, 
 		u = y, 
@@ -101,7 +101,7 @@ function hover_ring_info(current, index)
 			local hitbox_rd = screen_space(hitbox.r, hitbox.d)
 			gui.drawBox(hitbox_lu.x, hitbox_lu.y, hitbox_rd.x, hitbox_rd.y, 0x00000000, 0x40FFFFFF)
 			current_hitbox_event = index
-		end
+		end	
 	end
 end
 
@@ -291,7 +291,6 @@ while true do
 		end
 		draw_ring_heatmap(userdata.get("rayman_ringmapper_current_ring"))
 		draw_rayman_pos()
-		draw_mouse_hover_hitbox()
 		draw_mask()
 	else
 		userdata.set("rayman_ringmapper_current_ring", nil)
