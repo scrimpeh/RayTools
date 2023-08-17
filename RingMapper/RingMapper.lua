@@ -50,7 +50,6 @@ function draw_rayman_pos()
 	gui.drawLine(ray_pos.x, ray_pos.y - 2, ray_pos.x, ray_pos.y + 2, 0xFFFFFFFF)
 end
 
-
 function get_hitbox(current)
 	local current_x = memory.read_s16_le(current + 0x1C)
 	local current_y = memory.read_s16_le(current + 0x1E)
@@ -78,6 +77,34 @@ function get_hitbox(current)
 	}
 end
 
+function hover_ring_info(current, index)
+	local current_x = memory.read_s16_le(current + 0x1C)
+	local current_y = memory.read_s16_le(current + 0x1E)
+
+	-- Draw info about the current event
+	local cur = screen_space(current_x, current_y)
+	local cur_screen = client.transformPoint(cur.x, cur.y)
+	gui.text(cur_screen.x, cur_screen.y, index, "lightgreen")
+	gui.text(cur_screen.x, cur_screen.y + 16, current_x, "lightgreen")
+	gui.text(cur_screen.x, cur_screen.y + 32, current_y, "lightgreen")
+
+	gui.drawLine(cur.x - 2, cur.y, cur.x + 2, cur.y, 0xFFFFFFFF)
+	gui.drawLine(cur.x, cur.y - 2, cur.x, cur.y + 2, 0xFFFFFFFF)
+
+	-- Does the user mouseover the hitbox?
+	local hitbox = get_hitbox(current)
+	if hitbox ~= nil then
+		local mouse_world = world_space(mouse_x, mouse_y)
+		if mouse_world.x >= hitbox.l and mouse_world.x <= hitbox.r and mouse_world.y >= hitbox.u and mouse_world.y <= hitbox.d then
+			-- Draw Hitbox
+			local hitbox_lu = screen_space(hitbox.l, hitbox.u)
+			local hitbox_rd = screen_space(hitbox.r, hitbox.d)
+			gui.drawBox(hitbox_lu.x, hitbox_lu.y, hitbox_rd.x, hitbox_rd.y, 0x00000000, 0x40FFFFFF)
+			current_hitbox_event = index
+		end
+	end
+end
+
 function find_ring_mouseover()
 	local event_mem_start = memory.read_u32_le(0x1D7AE0) - ADDR_OFFSET
 	local event_count = memory.readbyte(0x1D7AE4)
@@ -85,30 +112,9 @@ function find_ring_mouseover()
 	local index = memory.read_s16_le(current_event)
 	while index ~= -1 do
 		local current = event_mem_start + EVENT_SIZE * index
-		local current_x = memory.read_s16_le(current + 0x1C)
-		local current_y = memory.read_s16_le(current + 0x1E)
-
-		-- Draw the current event
-		local current_type = memory.read_u8(current + 13)
-		local cur = screen_space(current_x, current_y)
-		local cur_screen = client.transformPoint(cur.x, cur.y)
-		gui.text(cur_screen.x, cur_screen.y, index, "lightgreen")
-		gui.text(cur_screen.x, cur_screen.y + 16, current_x, "lightgreen")
-		gui.text(cur_screen.x, cur_screen.y + 32, current_y, "lightgreen")
-
-		gui.drawLine(cur.x - 2, cur.y, cur.x + 2, cur.y, 0xFFFFFFFF)
-		gui.drawLine(cur.x, cur.y - 2, cur.x, cur.y + 2, 0xFFFFFFFF)
-
-		-- See if the user hovers over the hitbox
-		
-		-- TODO: Check for Event Type so only rings can be selected
-		local hitbox = get_hitbox(current)
-		if hitbox ~= nil then
-			local mouse_world = world_space(mouse_x, mouse_y)
-			if mouse_world.x >= hitbox.l and mouse_world.x <= hitbox.r and mouse_world.y >= hitbox.u and mouse_world.y <= hitbox.d then
-				current_hitbox_event = index
-				current_hitbox = hitbox
-			end
+		local event_type = memory.read_u8(current + 0x63)
+		if event_type == 140 then
+			hover_ring_info(current, index)
 		end
 
 		current_event = current_event + 2
@@ -178,14 +184,6 @@ function get_heatmap_lookup()
 		end
 	end
 	return heatmap_lookup
-end
-
-function draw_mouse_hover_hitbox()
-	if current_hitbox ~= nil then
-		local hitbox_lu = screen_space(current_hitbox.l, current_hitbox.u)
-		local hitbox_rd = screen_space(current_hitbox.r, current_hitbox.d)
-		gui.drawBox(hitbox_lu.x, hitbox_lu.y, hitbox_rd.x, hitbox_rd.y, 0x00000000, 0x40FFFFFF)
-	end
 end
 
 function draw_ring_heatmap(ring_index)
@@ -277,7 +275,6 @@ while true do
 	gui.clearGraphics()
 	gui.cleartext()
 
-	current_hitbox = nil
 	current_hitbox_event = nil
 
 	-- Get variables
